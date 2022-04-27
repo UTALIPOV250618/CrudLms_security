@@ -23,5 +23,6 @@ public class Student {
     private String email;
 
     @ManyToOne
+    @JoinColumn(name = "group_id")
     private Group group;
 }

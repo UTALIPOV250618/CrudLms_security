@@ -22,7 +22,7 @@ public class Teacher {
     private String tea_lastname;
     private String email;
 
-    @OneToOne
+    @OneToOne(mappedBy = "teacher")
     private Course course;
 
 }

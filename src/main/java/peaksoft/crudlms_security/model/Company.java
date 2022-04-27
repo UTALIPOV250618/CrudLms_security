@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-@Builder
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -19,6 +19,6 @@ public class Company {
     @Column(name = "company_name")
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "company")
     private List<Course> courses;
 }

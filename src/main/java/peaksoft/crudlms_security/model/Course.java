@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,10 +22,14 @@ public class Course {
     private String course_name;
 
     @ManyToOne
+    @JoinColumn(name = "company_id")
     private Company company;
 
     @ManyToMany
-    private Set<Group> groups;
+    @JoinTable(name = "course_groups",
+            joinColumns = @JoinColumn(name = "course_id"),
+    inverseJoinColumns = @JoinColumn(name = "groups_id"))
+    private Set<Group> groupSet = new java.util.LinkedHashSet<>();
 
     @OneToOne
     private Teacher teacher;

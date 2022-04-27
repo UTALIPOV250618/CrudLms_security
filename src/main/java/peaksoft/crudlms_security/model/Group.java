@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "group")
+@Table(name = "groupSet")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,7 +24,9 @@ public class Group {
     private String group_name;
 
     @ManyToMany
+            (mappedBy = "groupSet")
     private Set<Course> courses;
-    @OneToMany
+
+    @OneToMany(mappedBy = "group")
     private List<Student> students;
 }
