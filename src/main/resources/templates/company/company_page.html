@@ -10,8 +10,8 @@
 </head>
 <body>
 <div align="center">
-    <h1>Car List</h1>
-    <a th:href="@{/company/new}">Add new car</a>
+    <h1>Company List</h1>
+    <a th:href="@{/company/new}">Add new company</a>
     <br>
     <a th:href="@{/}">Go to Main Page</a>
 
@@ -26,7 +26,7 @@
         </thead>
         <tbody th:each="company:${companyList}">
         <td th:text="${company.id}">Company id</td>
-        <td th:text="${company.name}">Car name</td>
+        <td th:text="${company.name}">Company name</td>
 
         <td >
             <a th:href="@{'/company/edit/'+${company.id}}">Edit</a>

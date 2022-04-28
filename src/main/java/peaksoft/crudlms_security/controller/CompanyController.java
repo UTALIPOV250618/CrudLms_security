@@ -4,8 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import peaksoft.crudlms_security.model.Company;
 import peaksoft.crudlms_security.service.CompanyService;
 
@@ -34,9 +36,21 @@ public class CompanyController {
         model.addAttribute("company", company);
         return "company/new_company";
     }
-    @RequestMapping(value = "/save",method = RequestMethod.POST)
-    public String save(@ModelAttribute("company")Company company){
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveCompany(@ModelAttribute("company")Company company){
         service.save(company);
+        return "redirect:/company/";
+    }
+    @RequestMapping("/edit/{id}")
+    public ModelAndView companyEdit(@PathVariable(name = "id")long id){
+        ModelAndView view = new ModelAndView("company/edit_company");
+        Company company = service.getById(id);
+        view.addObject("company",company);
+        return view;
+    }
+    @RequestMapping("/delete/{id}")
+    public String deleteByIdCompany(@PathVariable(name = "id")long id){
+        service.deleteById(id);
         return "redirect:/company/";
     }
 
