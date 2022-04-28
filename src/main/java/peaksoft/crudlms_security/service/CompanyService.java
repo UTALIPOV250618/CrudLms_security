@@ -18,4 +18,15 @@ public class CompanyService {
     public List<Company> getAllCompany(){
         return repository.findAll();
     }
+
+    public Company getById(long id){
+        return repository.findById(id).get();
+    }
+    public void deleteById(long id){
+        repository.deleteById(id);
+    }
+    public void save(Company company){
+        repository.save(company);
+    }
+
 }
