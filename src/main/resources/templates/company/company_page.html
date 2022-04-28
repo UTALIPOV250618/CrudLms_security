@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,6 +9,33 @@
     <title>Document</title>
 </head>
 <body>
+<div align="center">
+    <h1>Car List</h1>
+    <a th:href="@{/company/new}">Add new car</a>
+    <br>
+    <a th:href="@{/}">Go to Main Page</a>
+
+    <br><br>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Company Id</th>
+            <th>Company name</th>
+
+        </tr>
+        </thead>
+        <tbody th:each="company:${companyList}">
+        <td th:text="${company.id}">Company id</td>
+        <td th:text="${company.name}">Car name</td>
+
+        <td >
+            <a th:href="@{'/company/edit/'+${company.id}}">Edit</a>
+            <a th:href="@{'/company/delete/'+${company.id}}">Delete</a>
+
+        </td>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>
