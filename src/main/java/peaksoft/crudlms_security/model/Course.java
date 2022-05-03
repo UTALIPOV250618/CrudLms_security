@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -20,6 +21,8 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String course_name;
+    private LocalDate startTime;
+    private LocalDate endTime;
 
     @ManyToOne
     @JoinColumn(name = "company_id")
@@ -33,4 +36,6 @@ public class Course {
 
     @OneToOne
     private Teacher teacher;
+
+
 }

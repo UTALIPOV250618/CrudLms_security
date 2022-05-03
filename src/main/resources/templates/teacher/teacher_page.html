@@ -1,0 +1,47 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teacher Page</title>
+</head>
+<body>
+<div align="center">
+    <h1>Teacher List</h1>
+    <a th:href="@{/teacher/new_teacher}">Add new teacher</a>
+    <br>
+    <a th:href="@{/}">Go to Main Page</a>
+
+    <br><br>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Teacher Id</th>
+            <th>Teacher name</th>
+            <th>Teacher last name</th>
+            <th>Teacher email</th>
+            <th>Action</th>
+
+        </tr>
+        </thead>
+        <tbody th:each="teacher:${teacherList}">
+        <td th:text="${teacher.id}">Teacher id</td>
+        <td th:text="${teacher.tea_name}">Teacher name</td>
+        <td th:text="${teacher.tea_lastname}">Teacher lastname</td>
+        <td th:text="${teacher.email}">Teacher email</td>
+        <td th:text="${teacher.course.id}">Course id</td>
+
+        <td >
+            <a th:href="@{'/teacher/edit/'+${teacher.id}}">Edit</a>
+            <a th:href="@{'/teacher/delete/'+${teacher.id}}">Delete</a>
+
+        </td>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -30,7 +30,7 @@ public class CompanyController {
         return "company/company_page";
     }
 
-    @RequestMapping("/new")
+    @RequestMapping("/new_company")
     public String createNewCompany(Model model){
         Company company = new Company();
         model.addAttribute("company", company);

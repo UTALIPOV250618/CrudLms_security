@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Course Page</title>
+</head>
+<body>
+<div align="center">
+    <h1> Course page</h1>
+    <a th:href="@{/course/new}">Add new course</a>
+    <br>
+    <a th:href="@{/}">Go to main page</a>
+    <br>
+    <br>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Course Id</th>
+            <th>Course name</th>
+            <th>Course startTime</th>
+            <th>Course endTime</th>
+            <th>Company name</th>
+            <th>Group name</th>
+            <th>Teacher name</th>
+            <th>Action</th>
+
+            <th></th>
+        </tr>
+        </thead>
+        <tbody th:each="course:${courseList}">
+            <td th:text="${course.id}">Course Id</td>
+            <td th:text="${course.course_name}">Course name</td>
+            <td th:text="${course.startTime}">Course start time</td>
+            <td th:text="${course.endTime}">Course end time</td>
+            <td th:text="${course.getCompany().getName()}">Company name</td>
+            <td th:text="${course.groupSet}">Group name</td>
+            <td th:text="${course.getCompany().getName()}">Teacher name</td>
+            <td>
+                <a th:href="@{'/course/edit/'+${course.id}}" >Edit</a>
+                <a th:href="@{'/course/delete/'+${course.id}}" >Delete</a>
+                <a></a>
+            </td>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
