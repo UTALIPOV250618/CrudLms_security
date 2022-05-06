@@ -24,7 +24,7 @@ public class StudentController {
     public String getAllStudents(Model model){
         List<Student> studentList = service.getAllStudents();
         model.addAttribute("studentList",studentList);
-        return "group/group_page";
+        return "student/student_page";
     }
     @RequestMapping("/new_student")
     public String addNewStudent(Model model){

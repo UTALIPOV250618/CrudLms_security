@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -22,9 +23,9 @@ public class Group {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String group_name;
-
-    @ManyToMany
-            (mappedBy = "groupSet")
+    private LocalDate startDate;
+    private LocalDate endDate;
+    @ManyToMany(mappedBy = "groupSet")
     private Set<Course> courses;
 
     @OneToMany(mappedBy = "group")
@@ -32,8 +33,6 @@ public class Group {
 
     @Override
     public String toString() {
-        return "Group{" +
-                "id=" + id +
-                '}';
+        return group_name;
     }
 }

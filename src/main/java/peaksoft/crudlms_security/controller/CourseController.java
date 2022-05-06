@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import peaksoft.crudlms_security.model.Course;
 import peaksoft.crudlms_security.service.CourseService;
 
-import javax.lang.model.element.ModuleElement;
 import java.util.List;
 
 @Controller
@@ -36,7 +35,7 @@ public class CourseController {
     }
     @RequestMapping(value = "/save",method = RequestMethod.POST)
     public String saveCourse(@ModelAttribute("course")Course course){
-        service.save(course);
+        service.saveCourse(course);
         return "redirect:/course/";
     }
     @RequestMapping("/edit/{id}")

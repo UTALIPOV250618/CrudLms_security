@@ -7,6 +7,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,8 +24,7 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String course_name;
-    private LocalDate startTime;
-    private LocalDate endTime;
+    private Long duration;
 
     @ManyToOne
     @JoinColumn(name = "company_id")
@@ -32,9 +34,10 @@ public class Course {
     @JoinTable(name = "course_groups",
             joinColumns = @JoinColumn(name = "course_id"),
     inverseJoinColumns = @JoinColumn(name = "groups_id"))
-    private Set<Group> groupSet = new java.util.LinkedHashSet<>();
+    private List<Group> groupSet ;
 
     @OneToOne
+    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 
 
